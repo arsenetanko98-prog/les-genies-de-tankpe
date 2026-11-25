@@ -35,7 +35,7 @@ function Login({ onOk }: { onOk: () => void }) {
     e.preventDefault();
     setLoad(true); setErr('');
     const { error } = await supabase.auth.signInWithPassword({ email: email.trim(), password: pw });
-    if (error) { setErr('E-mail ou mot de passe incorrect.'); setLoad(false); return; }
+    if (error) { setErr(error.message === 'Email not confirmed' ? "E-mail non confirmé : dans Supabase, ouvrez l'utilisateur et confirmez-le." : error.message === 'Invalid login credentials' ? "E-mail ou mot de passe incorrect, ou utilisateur inexistant dans Supabase (Authentication > Users)." : 'Connexion impossible : ' + error.message); setLoad(false); return; }
     const { data } = await supabase.rpc('est_admin');
     setLoad(false);
     if (!data) { await supabase.auth.signOut(); setErr("Ce compte n'a pas accès à l'espace Direction."); return; }
