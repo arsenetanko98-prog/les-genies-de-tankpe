@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html { scroll-behavior: smooth; }
+body { @apply bg-white font-sans text-slate-800 antialiased; }
+h1, h2, h3, .font-display { font-family: 'Baloo 2', system-ui, sans-serif; }
+.input { @apply w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-sm outline-none focus:border-royal focus:ring-2 focus:ring-royal/20; }
+.btn { @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-bold transition active:scale-[.98] disabled:opacity-50; }
+.btn-primary { @apply bg-royal text-white hover:bg-navy; }
+.btn-gold { @apply bg-gold text-navy hover:brightness-95; }
+.btn-ghost { @apply border border-slate-300 bg-white text-slate-700 hover:bg-slate-50; }
+.btn-danger { @apply bg-red-50 text-red-700 hover:bg-red-100; }
+.card { @apply rounded-2xl border border-slate-200 bg-white p-4 shadow-sm; }
+.th { @apply px-3 py-2 text-left text-xs font-bold text-slate-500; }
+.td { @apply px-3 py-2 text-sm; }
+@keyframes defile { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.defile { animation: defile 40s linear infinite; }
+.defile:hover { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) { .defile { animation: none; } }
+@media print { .no-print { display: none !important; } body { background: #fff; } }
